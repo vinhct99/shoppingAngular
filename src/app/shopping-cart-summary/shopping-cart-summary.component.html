@@ -1,0 +1,22 @@
+<div class="card" style="width: 500px;">
+    <ng-container *ngIf="cart$ | async as cart">
+    <div class="card-body">
+      <h5 class="card-title">Order Summary</h5>
+      <p class="card-text">You have {{cart.totalItemsCount}} items in your shipping cart</p>
+        <ul class="list-group">
+            <li *ngFor="let item of cart.items" class="list-group-item fw-normal">
+                {{item.quantity}} x {{item.product.title}}
+                <div class="float-right" style="float:right">
+                    {{item.totalPrice | currency:'USD':'symbol'}}
+                </div>
+            </li>
+            <li class="list-group-item fw-bolder">
+                Total: 
+                <div class="float-right" style="float:right">
+                    {{cart.totalPrice | currency:'USD':'symbol'}}
+                </div>
+            </li>
+        </ul>
+    </div>
+    </ng-container>
+  </div>
